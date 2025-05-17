@@ -1,0 +1,179 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API APLICACIONES Wen II",
+        "description": "Documentacion generada automaticamentecon L5-Swagger",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/estudiantes": {
+            "get": {
+                "summary": "Lista de estudiantes",
+                "operationId": "209e318b7ac388b93bccf7af4162e33b",
+                "responses": {
+                    "200": {
+                        "description": "Lista obtenida correctamente"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Crear un nuevo estudiante",
+                "operationId": "bf7df90391b947c8dc2f77570e61358a",
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "Indica que se espera una respuesta en formato JSON",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "application/json"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre",
+                                    "cedula",
+                                    "correo",
+                                    "paralelo_id"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "Juan Pérez"
+                                    },
+                                    "cedula": {
+                                        "type": "string",
+                                        "example": "1101234567"
+                                    },
+                                    "correo": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "juan@example.com"
+                                    },
+                                    "paralelo_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Estudiante creado exitosamente"
+                    },
+                    "422": {
+                        "description": "Errores de validación"
+                    }
+                }
+            }
+        },
+        "/api/estudiantes/{id}": {
+            "get": {
+                "summary": "Mostrar un estudiante específico",
+                "operationId": "fcd2a65dde4ddb1efd0765a95b43b9fb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del estudiante",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Estudiante encontrado"
+                    },
+                    "404": {
+                        "description": "Estudiante no encontrado"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Actualizar un estudiante existente",
+                "operationId": "a0d23067013987f1a070c064758e522b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del estudiante a actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "Pedro Gómez"
+                                    },
+                                    "cedula": {
+                                        "type": "string",
+                                        "example": "1101234568"
+                                    },
+                                    "correo": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "pedro@example.com"
+                                    },
+                                    "paralelo_id": {
+                                        "type": "integer",
+                                        "example": 2
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Estudiante actualizado correctamente"
+                    },
+                    "404": {
+                        "description": "Estudiante no encontrado"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Eliminar un estudiante",
+                "operationId": "caeee49dd1fc2f0619a1069d2e414f0b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del estudiante a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Estudiante eliminado correctamente"
+                    },
+                    "404": {
+                        "description": "Estudiante no encontrado"
+                    }
+                }
+            }
+        }
+    }
+}
